@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import background from "./components/img/background.jpg"
 import { SunIcon } from '@chakra-ui/icons'
-import { ChakraProvider, Checkbox, Button, Flex, Heading, Center, Stack } from '@chakra-ui/react'
+import { ChakraProvider, Checkbox, Button, Flex, Heading, Center } from '@chakra-ui/react'
 import {
   Table,
   Thead,
@@ -18,7 +18,6 @@ const MainBackground = styled.div`
   min-height: 100vh;
   width: 100%;
   background-image: url(${background});
-
 `
 function App() {
   return (
