@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import background from "./components/img/background.jpg"
+import MainBackground from "./components/img/Mainbackgroud";
 import { SunIcon } from '@chakra-ui/icons'
 import { ChakraProvider, Checkbox, Button, Flex, Heading, Center } from '@chakra-ui/react'
 import {
@@ -13,12 +12,7 @@ import {
   TableContainer,
 } from '@chakra-ui/react'
 
-const MainBackground = styled.div`
-  position: absolute;
-  min-height: 100vh;
-  width: 100%;
-  background-image: url(${background});
-`
+
 function App() {
   return (
     <MainBackground>
