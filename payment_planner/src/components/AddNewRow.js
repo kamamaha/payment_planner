@@ -1,37 +1,56 @@
-import React, { useRef } from "react";
-import { Input, Button, Text } from "@chakra-ui/react";
+import React, { useRef, useState } from "react";
+import { Input, Button, Text, Container } from "@chakra-ui/react";
 
-const AddNewRow = ({addNewRowCallBack}) => {
+const AddNewRow = ({ addNewRowCallBack }) => {
+  const dateRef = useRef(null);
+  const nameOfPaymentRef = useRef(null);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+  const onButtonClick = () => {
+    addNewRowCallBack(dateRef.current.value, nameOfPaymentRef.current.value);
 
- const dateRef = useRef(null)
- const nameOfPaymentRef = useRef(null)
-const onButtonClick = () => {
-    addNewRowCallBack(dateRef.current.value, nameOfPaymentRef.current.value)
-}
+    dateRef.current.value = "";
+    nameOfPaymentRef.current.value = "";
+    setIsButtonDisabled(true)
+  };
 
   return (
-    <>
-      <Text fontSize="lg">Add new payment due</Text>
-      <Input
-        type="text"
-        placeholder="data of payment"
+    <Container maxW="30%" px="10" bgColor="cyan.100">
+      <Text fontSize="lg" as="b">
+        Add new payment due
+      </Text>
+    
+        <Input
+          mb="2"
+          type="text"
+          placeholder="data of payment"
+          colorScheme="teal"
+          focusBorderColor="teal"
+          color="gray"
+          borderColor="teal"
+          ref={dateRef}
+        />
+
+        <Input
+          type="text"
+          placeholder="name of payment"
+          colorScheme="teal"
+          focusBorderColor="teal"
+          color="gray"
+          borderColor="teal"
+          ref={nameOfPaymentRef}
+          onChange={() => setIsButtonDisabled(false)}
+        />
+     
+       <Button
         colorScheme="teal"
-        focusBorderColor="teal"
-        color="gray"
-        ref={dateRef}
-      />
-      <Input
-        type="text"
-        placeholder="name of payment"
-        colorScheme="teal"
-        focusBorderColor="teal"
-        color="gray"
-        ref={nameOfPaymentRef}
-      />
-      <Button colorScheme="pink" px={8} m={4} borderRadius="0px" onClick={onButtonClick}>
-        Save
+        my={4}
+        borderRadius="0px"
+        onClick={onButtonClick}
+        isDisabled={isButtonDisabled}
+      >
+        Save new payment due
       </Button>
-    </>
+    </Container>
   );
 };
 
